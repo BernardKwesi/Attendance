@@ -1,6 +1,10 @@
 <?php
 $title = "Index";
 require_once "includes/header.php";
+require_once 'db/conn.php';
+
+$results = $crud->getSpeciality();
+
 
 ?>
 
@@ -41,10 +45,11 @@ require_once "includes/header.php";
         <label for="speciality" class="form-label">Speciality</label>
         <select class="form-select" aria-label="Default select example" name="speciality">
 
-            <option selected>Software Developer</option>
-            <option>Database Administrator</option>
-            <option>Web Administrator</option>
-            <option>Other</option>
+            <?php while ($row = $results->fetch(PDO::FETCH_ASSOC)) { ?>
+
+                <option value="<?php echo $row['Speciality_ID']  ?>"><?php echo $row['Expertise'] ?></option>
+
+            <?php } ?>
         </select>
     </div>
     <div class="d-grid ">

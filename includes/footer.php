@@ -1,4 +1,4 @@
-<footer style="text-align:center ;">
+<footer class="text-center mt-5">
     <div>
         <p>COPYRIGHT @ <?php echo date('y') ?></p>
     </div>
@@ -17,7 +17,9 @@
     $(function() {
         $("#dob").datepicker({
             changeMonth: true,
-            changeYear: true
+            changeYear: true,
+            yearRange: "-75:+0",
+            dateFormat: "yy-mm-dd",
         });
     });
 </script>

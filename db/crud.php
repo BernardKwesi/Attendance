@@ -8,12 +8,12 @@ class CRUD
         $this->db = $conn;
     }
 
-    function createAccount($fname, $lname, $dob, $email, $contact, $speciality)
+    function createAttendee($fname, $lname, $dob, $email, $contact, $speciality)
     {
 
         try {
             //defining sql statement to be executed
-            $sql = "INSERT INTO attendee VALUES (:fname,:lname,:dob,:email,:contact,:speciality)";
+            $sql = "INSERT INTO attendee(Firstname,Lastname,DateOfBirth,Email,Contact,Speciality_ID) VALUES (:fname,:lname,:dob,:email,:contact,:speciality)";
             //Preparing the sql Stmt fot execution
             $stmt = $this->db->prepare($sql);
 
@@ -32,5 +32,30 @@ class CRUD
             echo $e->getMessage();
             return false;
         }
+    }
+
+    function getAttendees()
+    {
+        $sql = "SELECT * FROM attendee a inner join Speciality s on a.Speciality_ID = s.Speciality_ID";
+        $result = $this->db->query($sql);
+
+        return $result;
+    }
+
+    function getAttendeeDetails($id)
+    {
+        $sql = "SELECT * FROM attendee a inner join Speciality s on a.Speciality_ID = s.Speciality_ID WHERE attendee_ID = :id";
+        $stmt = $this->db->prepare($sql);
+        $stmt->bindparam(':id', $id);
+        $stmt->execute();
+        $result = $stmt->fetch();
+        return $result;
+    }
+    function getSpeciality()
+    {
+        $sql = "SELECT * FROM Speciality";
+        $result = $this->db->query($sql);
+
+        return $result;
     }
 }

@@ -1,5 +1,5 @@
 <?php
-$host = '127.0.0.1';
+$host = 'localhost';
 $db = 'attendace_db';
 $user = 'root';
 $password = '';
@@ -9,10 +9,10 @@ $dsn = "mysql:host=$host;dbname=$db;charset=$charset";
 
 try {
     $pdo = new PDO($dsn, $user, $password);
+    // echo "<h1 class='text-success text-center'>Connected to Database !!</h1>";
 } catch (PDOException $e) {
-    echo "<h1>No Database Found ";
-
-    //throw new PDOException($e -> getMessage);
+    // echo "<h1 class='text-danger text-center'>No Database Found ";
+    throw new PDOException($e->getMessage);
 }
 require_once 'crud.php';
 $crud = new crud($pdo);
