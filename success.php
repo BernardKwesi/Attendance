@@ -19,9 +19,9 @@ if (isset($_POST['submit'])) {
     $issuccess = $crud->createAttendee($firstname, $lastname,  $dob, $email, $contact, $speciality);
 
     if ($issuccess) {
-        echo "<h1 class='display-3 text-center text-success'> Registration Successful!!!</h1>";
+        include 'includes/successmessage.php';
     } else {
-        echo "<h1 class='display-2 text-center text-danger'>Registration UnSuccessful !!</h1>";
+        include 'includes/errormessage.php';;
     }
 }
 

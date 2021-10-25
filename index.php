@@ -25,7 +25,7 @@ $results = $crud->getSpeciality();
 
     <div class="mb-3">
         <label for="dob" class="form-label">Date of Birth</label>
-        <input type="text" class="form-control" id="dob" placeholder="MM/DD/YYYY" name="dob">
+        <input type="text" class="form-control" id="dob" placeholder="YYYY/MM/DD" name="dob">
 
     </div>
 
